@@ -1,0 +1,70 @@
+#=============================================================================
+# basic.toml --- basic configuration example for SpaceVim
+# Copyright (c) 2016-2022 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg@outlook.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+    # set spacevim theme. by default colorscheme layer is not loaded,
+    # if you want to use more colorscheme, please load the colorscheme
+    # layer
+    colorscheme = "gruvbox"
+    colorscheme_bg = "dark"
+    # Disable guicolors in basic mode, many terminal do not support 24bit
+    # true colors
+    enable_guicolors = true
+    # Disable statusline separator, if you want to use other value, please
+    # install nerd fonts
+    statusline_separator = "arrow"
+    statusline_iseparator = "bar"
+    buffer_index_type = 4
+    windows_index_type = 3
+    enable_tabline_filetype_icon = true
+    enable_statusline_mode = true
+    statusline_unicode = false
+    # Enable vim compatible mode, avoid changing origin vim key bindings
+    vimcompatible = true
+    guifont = "JetBrains Mono Regular Nerd Font Complete Mono:h11"
+    #default_indent = 4
+    expand_tab = false
+
+# Enable autocomplete layer
+[[layers]]
+name = 'autocomplete'
+auto_completion_return_key_behavior = "complete"
+auto_completion_tab_key_behavior = "cycle"
+
+[[layers]]
+name = 'shell'
+default_position = 'top'
+default_height = 30
+
+[[layers]]
+name = "format"
+enable = true
+format_on_save = true
+
+[[layers]]
+name = "core#statusline"
+
+[[layers]]
+name = "lang#c"
+enable_clang_syntax_highlight = true
+clang_flag = ['-I/usr/include/gtkmm-4.0', '-I/usr/lib/gtkmm-4.0/include', '-I/usr/include/giomm-2.68', '-I/usr/lib/giomm-2.68/include', '-I/usr/include/glib-2.0', '-I/usr/lib/glib-2.0/include', '-I/usr/include/sysprof-4', '-I/usr/include/libmount', '-I/usr/include/blkid', '-I/usr/include/glibmm-2.68', '-I/usr/lib/glibmm-2.68/include', '-I/usr/include/sigc++-3.0', '-I/usr/lib/sigc++-3.0/include', '-I/usr/include/gtk-4.0', '-I/usr/include/pango-1.0', '-I/usr/include/harfbuzz', '-I/usr/include/freetype2', '-I/usr/include/libpng16', '-I/usr/include/fribidi', '-I/usr/include/cairo', '-I/usr/include/lzo', '-I/usr/include/pixman-1', '-I/usr/include/gdk-pixbuf-2.0', '-I/usr/include/graphene-1.0', '-I/usr/lib/graphene-1.0/include', '-I/usr/include/cairomm-1.16', '-I/usr/lib/cairomm-1.16/include', '-I/usr/include/pangomm-2.48', '-I/usr/lib/pangomm-2.48/include', '-I/usr/include/gtk-4.0/unix-print', '-mfpmath=sse', '-msse', '-msse2', '-pthread', '-lgtkmm-4.0', '-lpangomm-2.48', '-lgiomm-2.68', '-lglibmm-2.68', '-lcairomm-1.16', '-lsigc-3.0', '-lgtk-4', '-lpangocairo-1.0', '-lpango-1.0', '-lharfbuzz', '-lgdk_pixbuf-2.0', '-lcairo-gobject', '-lcairo', '-lgraphene-1.0', '-lgio-2.0', '-lgobject-2.0', '-lglib-2.0']
+
+[[layers]]
+name = "lang#sh"
+format_on_save = true
+
+[[layers]]
+name = "checkers"
+
+[[custom_plugins]]
+repo = 'ekalinin/Dockerfile.vim'
+
+[[custom_plugins]]
+repo = 'vim-scripts/dbext.vim'
+
