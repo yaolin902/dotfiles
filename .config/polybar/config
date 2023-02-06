@@ -1,0 +1,429 @@
+
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #282828
+background-alt = #A89984
+foreground = #EBDBB2
+primary = #F0C674
+secondary = #8ABEB7
+alert = #A54242
+disabled = #707880
+aqua = #8EC07C
+green = #B8BB26
+red = #CC241D
+light-red = #FB4934
+blue = #83A598
+purple = #D3869B
+
+[glyph]
+gleft = 
+gright = 
+
+[module/left-out]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.blue}
+content = ${glyph.gleft}
+content-font = 2
+
+[module/left-out2]
+type = custom/text
+content-background = ${colors.foreground}
+content-foreground = ${colors.background}
+content = ${glyph.gleft}
+content-font = 2
+
+[module/left-blue]
+type = custom/text
+content-background = ${colors.purple}
+content-foreground = ${colors.blue}
+content = ${glyph.gleft}
+content-font = 2
+
+[module/left-purple]
+type = custom/text
+content-background = ${colors.blue}
+content-foreground = ${colors.purple}
+content = ${glyph.gleft}
+content-font = 2
+
+
+[module/right-out]
+type = custom/script
+format-background = ${colors.background}
+format-foreground = ${colors.green}
+exec = echo 
+label = %output%%{O-1}
+interval = 999
+
+
+[module/right-aqua]
+type = custom/text
+content-background = ${colors.green}
+content-foreground = ${colors.aqua}
+content = ${glyph.gright}
+content-font = 2
+
+[module/right-green]
+type = custom/text
+content-background = ${colors.aqua}
+content-foreground = ${colors.green}
+content = ${glyph.gright}
+content-font = 2
+
+[bar/top]
+width = 100%
+height = 16pt
+radius = 0
+offset-x = 0%
+offset-y = 0%
+; dpi = 96
+
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+; line-size = 2
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin = 0
+
+separator = 
+
+font-0 = "JetBrainsMono Nerd Font Mono:size=12;3"
+font-1 = "Source Han Sans CN:size=12;3"
+
+; modules-left = workspace left-purple package left-blue uptime left-purple backlight left-blue filesystem usb left-purple weather left-blue fctix left-purple bluetooth left-out polywins
+modules-left = workspace left-purple package left-blue uptime left-purple backlight left-blue filesystem usb left-purple bluetooth left-out polywins
+modules-right = right-out pulseaudio mic right-aqua memory right-green cpu cpups cputemperature right-aqua battery right-green wifi eth right-aqua date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+; tray-position = right
+
+; wm-restack = generic
+; wm-restack = bspwm
+; wm-restack = i3
+
+; override-redirect = true
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = "缾 %name%"
+label-active-background = ${colors.purple}
+label-active-foreground = ${colors.background}
+label-active-padding = 1
+
+label-occupied =
+label-occupied-padding = 1
+
+label-urgent =
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = 
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+[module/workspace]
+type = custom/script
+exec = ~/.config/polybar/workspace.sh
+tail = true
+click-left = kill -USR1 %pid%
+format-background = ${colors.purple}
+format-foreground = ${colors.background}
+interval = 0
+
+[module/uptime]
+type = custom/script
+exec = "uptime --pretty | sed 's/up //' | sed 's/\ years\?,/y/' | sed 's/\ weeks\?,/w/' | sed 's/\ days\?,/d/' | sed 's/\ hours\?,\?/h/' | sed 's/\ minutes\?/m/' | sed 's/$/ /'"
+format = <label>
+format-prefix = "  "
+format-background = ${colors.purple}
+format-foreground = ${colors.background}
+interval = 5
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/weather.sh 2>/dev/null
+format = <label>
+format-prefix = " "
+format-background = ${colors.blue}
+format-foreground = ${colors.background}
+interval = 90
+
+[module/bluetooth]
+type = custom/script
+exec = ~/.config/polybar/bluetooth.sh
+tail = true
+click-left = ~/.config/polybar/bluetooth.sh --toggle &
+format = <label>
+format-prefix = " "
+format-background = ${colors.blue}
+format-foreground = ${colors.background}
+
+[module/usb]
+type = custom/script
+exec = ~/.config/polybar/usb.sh
+tail = true
+interval = 5
+format-background = ${colors.purple}
+format-foreground = ${colors.background}
+
+[module/xwindow]
+type = internal/xwindow
+label = "%title:0:30:...% "
+format-prefix = "  "
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/polywins.sh 2>/dev/null
+format = <label>
+label = %output%
+tail = true
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}'
+tail = true
+
+[module/filesystem]
+type = internal/fs
+interval = 60
+mount-0 = /
+label-mounted = %free%
+format-mounted = "<label-mounted> "
+format-mounted-prefix = "  "
+format-mounted-background = ${colors.purple}
+format-mounted-foreground = ${colors.background}
+
+[module/package]
+type = custom/script
+exec = "checkupdates 2>/dev/null | wc -l"
+format = "<label> "
+format-prefix = "  "
+format-background = ${colors.blue}
+format-foreground = ${colors.background}
+interval = 120
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = "<ramp-volume> <label-volume> "
+format-volume-prefix = " "
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 墳
+label-volume = %percentage%%
+format-muted = "<label-muted> "
+format-muted-prefix = " 婢"
+label-muted = ""
+format-volume-background = ${colors.green}
+format-muted-background = ${colors.green}
+format-volume-foreground = ${colors.background}
+format-muted-foreground = ${colors.background}
+
+[module/mic]
+type = custom/script
+interval = 1
+format = "<label>"
+exec = ~/.config/polybar/mic.sh show-vol
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+; Control actions (using pactl)
+click-left = ~/.config/polybar/mic.sh mute-vol
+scroll-up = ~/.config/polybar/mic.sh inc-vol
+scroll-down = ~/.config/polybar/mic.sh dec-vol
+
+[module/backlight]
+type = internal/backlight
+card = amdgpu_bl0
+format = "<ramp> <label> "
+format-prefix = " "
+label = %percentage%%
+ramp-4 = 
+ramp-3 = 
+ramp-2 = 
+ramp-1 = 
+ramp-0 = 
+format-background = ${colors.blue}
+format-foreground = ${colors.background}
+enable-scroll = true
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+blacklist-2 = caps lock
+label-layout = "  %layout% "
+label-layout-foreground = ${colors.background}
+label-layout-background = ${colors.purple}
+
+[module/fctix]
+type = custom/script
+exec = ~/.config/polybar/fctix5.sh
+tail = true
+format-prefix = "  "
+format-background = ${colors.purple}
+format-foreground = ${colors.background}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "  "
+label = "%gb_used% "
+format-background = ${colors.aqua}
+format-foreground = ${colors.background}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "  "
+label = "%percentage%% "
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+
+[module/cpups]
+type = custom/script
+exec = ~/.config/polybar/ps.sh
+tail = true
+click-left = kill -USR1 %pid%
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+
+[module/cputemperature]
+type = internal/temperature
+interval = 2
+thermal-zone = 0
+hwmon-path = /sys/devices/virtual/thermal/thermal_zone0/hwmon1/temp1_input
+label = " %temperature-c% "
+label-warn = " %temperature-c% "
+base-temperature = 20
+warn-temperature = 80
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+format-warn-background = ${colors.green}
+format-warn-foreground = ${colors.red}
+format-prefix = " "
+format-warn-prefix = " "
+
+[module/gputemperature]
+type = internal/temperature
+interval = 2
+thermal-zone = 0
+hwmon-path = /sys/devices/pci0000:00/0000:00:08.1/0000:03:00.0/hwmon/hwmon7/temp1_input
+label = GPU %temperature-c%
+base-temperature = 20
+warn-temperature = 80
+
+[module/battery]
+type = internal/battery
+label-charging = "  %percentage%% "
+label-discharging = "%percentage%% "
+label-low = "  "
+label-full = "  "
+full-at = 99
+low-at = 15
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+format-charging-background = ${colors.aqua}
+format-charging-foreground = ${colors.background}
+format-discharging-background = ${colors.aqua}
+format-discharging-foreground = ${colors.background}
+format-full-background = ${colors.aqua}
+format-full-foreground = ${colors.background}
+format-low-background = ${colors.aqua}
+format-low-foreground = ${colors.background}
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-prefix = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = "<label-connected> "
+format-disconnected = "<label-disconnected> "
+format-connected-prefix = " "
+format-disconnected-prefix = " "
+format-connected-background = ${colors.green}
+format-connected-foreground = ${colors.background}
+format-disconnected-background = ${colors.green}
+format-disconnected-foreground = ${colors.background}
+
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+label-connected = %{A1:/home/y41/.config/polybar/net.sh:}直 %essid%%{A}
+label-disconnected = 睊
+
+[module/wlan1]
+inherit = network-base
+interface-type = wireless
+label-connected = %{A1:/home/y41/.config/polybar/net.sh:}直 %essid% %local_ip%   %downspeed% 祝 %upspeed%%{A}
+label-disconnected = 睊
+
+[module/wifi]
+type = custom/script
+exec = ~/.config/polybar/wifi.sh
+tail = true
+interval = 1
+click-left = kill -USR1 %pid%
+format-background = ${colors.green}
+format-foreground = ${colors.background}
+
+[module/eth]
+inherit = network-base
+interface-type = wired
+interface = enp3s0f4u2
+label-connected = 
+label-disconnected = 
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =  %H:%M
+date-alt =  %a, %Y-%m-%d %H:%M:%S
+
+label = "%date% "
+format = <label>
+format-prefix = " "
+format-background = ${colors.aqua}
+format-foreground = ${colors.background}
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+

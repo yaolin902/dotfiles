@@ -1,0 +1,86 @@
+-- Systems metrics
+
+conky.config = {
+    background = false,
+    font = 'JetBrains Mono Regular Nerd Font:size=9',
+    use_xft = true,
+    xftalpha = 1.0,
+    update_interval = 4,
+    total_run_times = 0,
+    own_window = true,
+    own_window_transparent = true,
+    own_window_type = 'override',
+    own_window_class = 'Conky',
+    own_window_argb_visual = true,
+    own_window_argb_value = 255,
+    own_window_colour = '#000',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    stippled_borders = 0,
+    border_width = 0,
+    default_color = '#EBDBB2',
+    default_shade_color = '#EBDBB2',
+    default_outline_color = '#EBDBB2',
+    alignment = 'top_right',
+    gap_x = 185,
+    gap_y = 55,
+    no_buffers = true,
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+    use_spacer = 'none',
+    maximum_width = 1024,
+    minimum_height = 640,
+    uppercase = true,
+};
+
+conky.text = [[
+#leet chars: ┤┤└└┴┴┐┐││┘┘┌┌├├┬┬┼┼┴┴── ││ ▽▼△▲▵▴▾▿
+${alignr}${offset 250}--------------------------------
+${alignr}${offset 0}┌──────── ${nodename}${font} ─────────────
+${alignr}${offset -155}${uid_name 1000}${font} ──────┐
+${alignr}${offset -155}< ${exec lsb_release -ds | sed 's/"//g'} > Distro ─┤
+${alignr}${offset -155}< ${kernel} > Kernel ─┤
+${alignr}${offset -155}< ${uptime_short} > Uptime ─┘
+${voffset -20}
+${alignr}${offset -30}┌──────────
+${alignr}${offset -100}│
+${alignr}${offset -100}< ${exec lspci | grep VGA | sed 's/03:00.0 VGA compatible controller: Advanced Micro Devices, Inc. \[//g' | sed 's/\]//g' | sed 's/ (rev c2)//g'} > GPU ────────────┘
+${alignr}${offset -195}< ${exec xdpyinfo | awk '/dimensions/{print $2}'} > Res
+${voffset 5}
+${alignr}${offset -40}< ${exec cat /etc/locale.conf | sed 's/LANG=//g'} > Locale ────────────────┐
+${alignr}${offset -40}│
+${voffset -5}
+${alignr}${offset -75}< 0 RPM > Fan Speed ──────────┐
+${alignr}${offset -75}│
+${alignr}${offset -75}┌────── Temperatures ───────────────┤
+${alignr}${offset -208}├─ Core0 < ${execi 5 sensors|grep 'temp1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
+${alignr}${offset -208}└─ Core1 < ${execi 5 sensors|grep 'temp2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C >${alignr}${offset -75}│
+${alignr}${offset -75}│
+${alignr}${offset -75}│
+${alignr}${offset -75}┌─── < ${exec cat /proc/cpuinfo | grep 'model name' | uniq | sed -e 's/model name.*: //' | sed 's/ with Radeon Graphics//g'} @ 2.3 > ──────────┤
+${alignr}${offset -370}│${offset 295}│
+${alignr}${offset -273}└─── Processes${offset 198}│
+${alignr}${offset -175}< ${top name 1}  ${top cpu 1} >${offset 100}│
+${alignr}${offset -175}< ${top name 2}  ${top cpu 2} >${offset 100}│
+${alignr}${offset -182}< ${top name 3}  ${top cpu 2} >
+${voffset 10}
+${alignr}${offset -75}< $mem/$memmax ${color #EBDBB2}${membar 5,50}${color} > RAM ──────────┐
+${voffset 5}
+${alignr}${offset -75} ${wireless_essid wlan0} : SSID ────────────┐
+${alignr}${offset -96}UP < ${color #EBDBB2}${upspeedgraph wlan0 15,130 BCC3C3 BCC3C3}${color} >${voffset 0}${offset 28}└─
+${alignr}${offset -110}${voffset 10}DOWN < ${color #EBDBB2}${downspeedgraph wlan0 15,130 BCC3C3 BCC3C3}${color} >
+${voffset 5}
+${alignr}${offset -75}${exec cat /sys/class/power_supply/BAT0/capacity} : Battery ───────────────────┐
+${alignr}${offset -95}< ${battery_percent BAT0}% > BAT 0 < ${color #EBDBB2}${battery_bar 5,110 BAT0}${color} >
+${voffset 10}
+${alignr}${offset -60}Hard Drive ─────────────────┐
+${alignr}${offset -70}< ${fs_used_perc}% > Root < ${color #EBDBB2}${fs_bar 5,120 /}${color} >${offset 10}│
+${alignr}${offset -70}< ${fs_used_perc /home}% > Home < ${color #EBDBB2}${fs_bar 5,120 /home}${color} >${offset 10}│
+${alignr}${offset 14}<  ${swapperc}% > Swap < ${color #EBDBB2}${swapbar 5,120}${color} >${offset 10}└────────────
+# ${alignr}${offset -640}volume: ${exec amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'}
+
+]];
