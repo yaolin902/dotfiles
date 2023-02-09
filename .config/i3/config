@@ -198,10 +198,14 @@ mode "move" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
 }
 # move workspace across monitor
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
+
+bindsym $mod+Shift+BackSpace move scratchpad
+bindsym $mod+BackSpace scratchpad show
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
