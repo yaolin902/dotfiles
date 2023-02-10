@@ -11,7 +11,7 @@ symoutline.setup({
   relative_width = true,
   width = 25,
   auto_close = false,
-  show_numbers = false,
+  show_numbers = true,
   show_relative_numbers = false,
   show_symbol_details = true,
   preview_bg_highlight = 'Pmenu',

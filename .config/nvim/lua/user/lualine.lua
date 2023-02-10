@@ -182,7 +182,7 @@ lualine.setup({
 	},
 	tabline = {},
 	winbar = {
-		lualine_c = { sym, space, pyenv },
+		-- lualine_c = { sym, space, pyenv },
 	},
 	inactive_winbar = {},
 	extensions = {},

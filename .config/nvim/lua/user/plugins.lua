@@ -60,6 +60,12 @@ return packer.startup(function(use)
 	use({ "folke/which-key.nvim" })
 	use({ "sindrets/diffview.nvim" })
 	use({ "gelguy/wilder.nvim" })
+	use({ "karb94/neoscroll.nvim" })
+	use({ "MattesGroeger/vim-bookmarks",
+    config = function()
+      require("user.bookmark")
+    end,
+  })
 	use({
 		"beauwilliams/focus.nvim",
 		config = function()
@@ -115,6 +121,7 @@ return packer.startup(function(use)
 	})
 	use({ "CRAG666/code_runner.nvim" })
 	use({ "kevinhwang91/nvim-hlslens" })
+	use({ "liuchengxu/vista.vim" })
 
 	-- telescope
 	use({ "nvim-telescope/telescope.nvim" })

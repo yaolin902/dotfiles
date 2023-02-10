@@ -36,12 +36,12 @@ local default_capabilities = {
 			editsNearCursor = true,
 		},
 	},
-	offsetEncoding = { "utf-8", "utf-16" },
+	offsetEncoding = "utf-8",
 }
 
 return {
 	default_config = {
-		cmd = { "clangd", "--compile-commands-dir=." },
+		cmd = { "clangd", "--compile-commands-dir=.", "--offset-encoding=utf-16" },
 		filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
 		root_dir = function(fname)
 			return util.root_pattern(unpack(root_files))(fname) or util.find_git_ancestor(fname)
