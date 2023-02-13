@@ -61,11 +61,9 @@ return packer.startup(function(use)
 	use({ "sindrets/diffview.nvim" })
 	use({ "gelguy/wilder.nvim" })
 	use({ "karb94/neoscroll.nvim" })
-	use({ "MattesGroeger/vim-bookmarks",
-    config = function()
-      require("user.bookmark")
-    end,
-  })
+	use({
+		"MattesGroeger/vim-bookmarks",
+	})
 	use({
 		"beauwilliams/focus.nvim",
 		config = function()
