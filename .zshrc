@@ -137,7 +137,7 @@ alias rm='rm -irf'
 
 
 # alias vim='nvim'
-alias kali='docker run --rm --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -v /home/y41/code/docker/kali/Shared-Folder:/root -it kali /usr/bin/zsh'
+alias kali='docker run --rm --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -v /home/y41/code/docker/kali/Shared-Folder:/root -it kali /usr/bin/zsh -c /usr/bin/tmux'
 alias pacman='sudo pacman'
 alias neofetch='neofetch --ascii_colors 12 4 --colors  4 4 4 4'
 alias htop='bpytop'
