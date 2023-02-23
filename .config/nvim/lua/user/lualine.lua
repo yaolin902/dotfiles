@@ -119,10 +119,10 @@ local filename = {
 	cond = hide_in_width,
 }
 
-local sym = {
-	"%{%v:lua.require'user.navic'.getnavic()%}",
-	color = { bg = "#282828" },
-}
+-- local sym = {
+-- 	"%{%v:lua.require'user.navic'.getnavic()%}",
+-- 	color = { bg = "#282828" },
+-- }
 
 local function env_cleanup(venv)
 	if string.find(venv, "/") then

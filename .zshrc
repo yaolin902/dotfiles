@@ -120,7 +120,9 @@ plugins=(
 colorscript random
 
 
+source ./.oh-my-zsh/custom/plugins/zsh-vi-mode/zsh-vi-mode.zsh
 source ./.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ./.oh-my-zsh/custom/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source ./.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ./.oh-my-zsh/custom/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 source ./.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.zsh
@@ -135,6 +137,14 @@ alias ..='cd ..'
 alias mv='mv -i'
 alias rm='rm -irf'
 
+# edit command in nvim
+export EDITOR=nvim
+export VISUAL=nvim
+export PATH=/home/y41/.local/bin:$PATH
+# export KEYTIMEOUT=1
+# autoload -U edit-command-line
+# zle -N edit-command-line
+# bindkey '^ ' edit-command-line
 
 # alias vim='nvim'
 alias kali='docker run --rm --cap-add=NET_ADMIN --device=/dev/net/tun --sysctl net.ipv6.conf.all.disable_ipv6=0 -v /home/y41/code/docker/kali/Shared-Folder:/root -it kali /usr/bin/zsh -c /usr/bin/tmux'

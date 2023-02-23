@@ -6,7 +6,7 @@ if not status_cmp_ok then
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.offsetEncoding = { "utf-16" }
+M.capabilities.offsetEncoding = { "utf-8" }
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
@@ -89,25 +89,34 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	if client.name == "sumneko_lua" then
+	if client.name == "lua_ls" then
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	local status_ok, navic = pcall(require, "nvim-navic")
-	if not status_ok then
-		return
-	end
-
-	if client.server_capabilities.documentSymbolProvider then
-		navic.attach(client, bufnr)
-	end
+	-- local status_ok, navic = pcall(require, "nvim-navic")
+	-- if not status_ok then
+	-- 	return
+	-- end
+	--
+	-- if client.server_capabilities.documentSymbolProvider then
+	-- 	navic.attach(client, bufnr)
+	-- end
 
 	lsp_keymaps(bufnr)
+
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
 		return
 	end
+
 	illuminate.on_attach(client)
+
+	local status_ok, lsp_sig = pcall(require, "lsp_signature")
+	if not status_ok then
+		return
+	end
+
+	lsp_sig.on_attach(client, bufnr)
 end
 
 return M

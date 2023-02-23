@@ -27,6 +27,8 @@ keymap("n", "<leader>tg", ":Telescope live_grep<cr>", opts)
 keymap("n", "<leader>s", ":SymbolsOutline<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap("n", "<leader>j", ":HopWord<cr>", opts)
+keymap("n", "<leader>r", ":RnvimrToggle<cr>", opts)
+keymap("n", "<leader>c", ":Codi!!<cr>", opts)
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)

@@ -44,7 +44,7 @@ return packer.startup(function(use)
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
-	use({ "akinsho/bufferline.nvim", tag = "v3.*" })
+	use({ "akinsho/bufferline.nvim" })
 	use({ "moll/vim-bbye" })
 	use({ "barklan/capslock.nvim" })
 	use({ "lewis6991/gitsigns.nvim" })
@@ -61,35 +61,14 @@ return packer.startup(function(use)
 	use({ "sindrets/diffview.nvim" })
 	use({ "gelguy/wilder.nvim" })
 	use({ "karb94/neoscroll.nvim" })
-	use({
-		"MattesGroeger/vim-bookmarks",
-	})
-	use({
-		"beauwilliams/focus.nvim",
-		config = function()
-			require("focus").setup()
-		end,
-	})
-	use({
-		"NvChad/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end,
-	})
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2", -- optional but strongly recommended
-		config = function()
-			-- you can configure Hop the way you like here; see :h hop-config
-			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-		end,
-	})
-	use({
-		"AckslD/nvim-neoclip.lua",
-		config = function()
-			require("neoclip").setup()
-		end,
-	})
+	use({ "ThePrimeagen/harpoon" })
+	use({ "folke/todo-comments.nvim" })
+	use({ "MattesGroeger/vim-bookmarks" })
+	use({ "kevinhwang91/rnvimr" })
+	use({ "beauwilliams/focus.nvim" })
+	use({ "NvChad/nvim-colorizer.lua" })
+	use({ "phaazon/hop.nvim" })
+	use({ "AckslD/nvim-neoclip.lua" })
 
 	-- completion
 	use({ "hrsh7th/nvim-cmp" })
@@ -103,6 +82,7 @@ return packer.startup(function(use)
 	use({ "rafamadriz/friendly-snippets" })
 	use({ "windwp/nvim-autopairs" })
 	use({ "numToStr/Comment.nvim" })
+	use({ "metakirby5/codi.vim" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" })
@@ -111,15 +91,13 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 
 	use({ "simrat39/symbols-outline.nvim" })
-	use({ "SmiteshP/nvim-navic" })
+	-- use({ "SmiteshP/nvim-navic" })
 	use({ "RRethy/vim-illuminate" })
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-	})
+	use({ "glepnir/lspsaga.nvim" })
 	use({ "CRAG666/code_runner.nvim" })
 	use({ "kevinhwang91/nvim-hlslens" })
-	use({ "liuchengxu/vista.vim" })
+	-- use({ "liuchengxu/vista.vim" })
+	use({ "ray-x/lsp_signature.nvim" })
 
 	-- telescope
 	use({ "nvim-telescope/telescope.nvim" })
