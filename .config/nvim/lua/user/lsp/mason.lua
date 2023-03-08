@@ -4,6 +4,7 @@ local servers = {
 	"jsonls",
 	"clangd",
   "omnisharp",
+  "sqlls",
 }
 
 local settings = {
