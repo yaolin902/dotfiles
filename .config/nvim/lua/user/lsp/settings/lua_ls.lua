@@ -17,6 +17,15 @@ if vim.fn.has 'win32' == 1 then
   cmd = { 'cmd.exe', '/C', bin_name }
 end
 
+local default_capabilities = {
+	textDocument = {
+		completion = {
+			editsNearCursor = true,
+		},
+	},
+	offsetEncoding = "utf-8",
+}
+
 return {
   default_config = {
     cmd = cmd,
@@ -35,6 +44,7 @@ return {
     single_file_support = true,
     log_level = vim.lsp.protocol.MessageType.Warning,
     settings = { Lua = { telemetry = { enable = false } } },
+		capabilities = default_capabilities,
   },
   docs = {
     description = [[

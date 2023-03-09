@@ -5,7 +5,7 @@ end
 
 vim.opt.foldcolumn = "1"
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.opt.foldlevel = 99 
+vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
 vim.opt.foldmethod = "expr"
@@ -53,4 +53,19 @@ ufo.setup({
 	provider_selector = function(bufnr, filetype, buftype)
 		return { "treesitter", "indent" }
 	end,
+})
+
+local status_ok, statuscol = pcall(require, "statuscol")
+if not status_ok then
+	return
+end
+
+local builtin = require("statuscol.builtin")
+statuscol.setup({
+	relculright = true,
+	segments = {
+		{ text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+		{ text = { "%s" }, click = "v:lua.ScSa" },
+		{ text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+	},
 })

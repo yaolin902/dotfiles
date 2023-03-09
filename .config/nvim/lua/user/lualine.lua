@@ -15,9 +15,9 @@ end
 local diagnostics = {
 	"diagnostics",
 	sources = { "nvim_diagnostic" },
-	sections = { "error", "warn" },
-	symbols = { error = " ", warn = " " },
-	colored = false,
+	-- sections = { "error", "warn" },
+	symbols = { error = " ", warn = " ", info = " ", hint = " " },
+	colored = true,
 	update_in_insert = false,
 	always_visible = true,
 }
@@ -117,6 +117,16 @@ local filename = {
 	newfile_statue = false,
 	path = 3,
 	cond = hide_in_width,
+	shorting_target = 300,
+}
+
+local fileformat = {
+	"fileformat",
+	symbols = {
+		unix = "", -- e712
+		dos = "", -- e70f
+		mac = "", -- e711
+	},
 }
 
 -- local sym = {
@@ -168,7 +178,7 @@ lualine.setup({
 		lualine_a = { "mode" },
 		lualine_b = { branch },
 		lualine_c = { diagnostics, filename, lsp },
-		lualine_x = { diff, "encoding", filetype },
+		lualine_x = { diff, "encoding", fileformat, filetype },
 		lualine_y = { "location" },
 		lualine_z = { "progress" },
 	},

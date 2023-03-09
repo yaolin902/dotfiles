@@ -29,6 +29,8 @@ keymap("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap("n", "<leader>j", ":HopWord<cr>", opts)
 keymap("n", "<leader>r", ":RnvimrToggle<cr>", opts)
 keymap("n", "<leader>c", ":Codi!!<cr>", opts)
+keymap("n", "<leader>g", ":LazyGit<cr>", opts)
+keymap("n", "<leader>xx", ":TroubleToggle<cr>", opts)
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)

@@ -144,6 +144,11 @@ _G.packer_plugins = {
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/diffview.nvim",
     url = "https://github.com/sindrets/diffview.nvim"
   },
+  ["flit.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/flit.nvim",
+    url = "https://github.com/ggandor/flit.nvim"
+  },
   ["focus.nvim"] = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/focus.nvim",
@@ -189,6 +194,16 @@ _G.packer_plugins = {
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
+  ["leap.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
+  },
   ["lsp_signature.nvim"] = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
@@ -223,6 +238,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
+  },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -268,6 +293,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
     url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
+  ["nvim-notify"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -344,6 +374,11 @@ _G.packer_plugins = {
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/rnvimr",
     url = "https://github.com/kevinhwang91/rnvimr"
   },
+  ["statuscol.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/statuscol.nvim",
+    url = "https://github.com/luukvbaal/statuscol.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
@@ -374,6 +409,11 @@ _G.packer_plugins = {
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
   },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/undotree",
@@ -393,16 +433,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
-  },
-  ["which-key.nvim"] = {
-    loaded = true,
-    path = "/home/y41/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com/folke/which-key.nvim"
-  },
-  ["wilder.nvim"] = {
-    loaded = true,
-    path = "/home/y41/.local/share/nvim/site/pack/packer/start/wilder.nvim",
-    url = "https://github.com/gelguy/wilder.nvim"
   }
 }
 
