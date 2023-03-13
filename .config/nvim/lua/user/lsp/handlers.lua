@@ -32,7 +32,7 @@ M.setup = function()
 		signs = {
 			active = signs, -- show signs
 		},
-		update_in_insert = true,
+		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
 		float = {
@@ -57,7 +57,7 @@ M.setup = function()
 			spacing = 5,
 			severity_limit = "Warning",
 		},
-		update_in_insert = true,
+		update_in_insert = false,
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -103,7 +103,7 @@ M.on_attach = function(client, bufnr)
 	-- end
 
 	lsp_keymaps(bufnr)
-	--
+
 	-- local status_ok, illuminate = pcall(require, "illuminate")
 	-- if not status_ok then
 	-- 	return

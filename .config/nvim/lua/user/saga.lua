@@ -4,8 +4,8 @@ if not status_ok then
 end
 
 saga.setup({
-  code_action_icon = "",
-  border_style = "rounded",
+	code_action_icon = "",
+	border_style = "rounded",
 })
 local keymap = vim.keymap.set
 -- Lsp finder find the symbol definition implement reference
@@ -45,7 +45,7 @@ keymap("n", "]E", function()
 end, { silent = true })
 
 -- Outline
-keymap("n", "<leader>o", "<cmd>LSoutlineToggle<CR>", { silent = true })
+keymap("n", "<leader>s", "<cmd>Lspsaga outline<CR>", { silent = true })
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })

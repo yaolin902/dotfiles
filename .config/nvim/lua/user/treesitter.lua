@@ -14,7 +14,23 @@ if not status_ok then
 end
 
 configs.setup({
-	ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "python", "c", "cpp", "vim", "regex" }, -- put the language you want in this array
+	ensure_installed = {
+		"lua",
+		"markdown",
+		"markdown_inline",
+		"bash",
+		"python",
+		"c",
+		"cpp",
+		"vim",
+		"regex",
+		"typescript",
+    "svelte",
+    "html",
+    "css",
+    "javascript",
+    "tsx",
+	},
 	ignore_install = { "" },
 	sync_install = false,
 

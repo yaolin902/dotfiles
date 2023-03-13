@@ -137,6 +137,9 @@ alias ..='cd ..'
 alias mv='mv -i'
 alias rm='rm -irf'
 
+alias grep='rg'
+alias cat='bat'
+
 # edit command in nvim
 export EDITOR=nvim
 export VISUAL=nvim

@@ -34,6 +34,7 @@ noice.setup({
 	},
 })
 
+
 vim.cmd([[
 highlight NoiceCmdlinePopupBorder guibg=#282828 guifg=#83A598 gui=nocombine
 highlight NoiceCmdlineIcon guibg=#282828 guifg=#83A598 gui=nocombine

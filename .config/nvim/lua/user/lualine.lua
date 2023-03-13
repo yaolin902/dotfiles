@@ -36,7 +36,7 @@ local branch = {
 
 local filetype = {
 	"filetype",
-	colored = false,
+	colored = true,
 	icons_enabled = true,
 	icon = { align = "left" },
 }

@@ -5,6 +5,7 @@ local servers = {
 	"clangd",
   "omnisharp",
   "sqlls",
+  "svelte",
 }
 
 local settings = {
