@@ -19,9 +19,9 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.csharpier.with({ extra_args = { "--fast" } }),
 		formatting.sqlfluff,
+		formatting.shfmt,
 		diagnostics.flake8,
 		diagnostics.eslint,
 		diagnostics.cpplint,
 	},
 })
-
