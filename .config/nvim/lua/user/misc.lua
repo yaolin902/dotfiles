@@ -64,16 +64,39 @@ end
 
 surround.setup()
 
-local banned_messages = { "warning: multiple different client offset_encodings" }
+local status_ok, codeium = pcall(require, "codeium")
+if not status_ok then
+	return
+end
 
-vim.notify = (function(overridden)
-	return function(msg, ...)
-		for _, banned in ipairs(banned_messages) do
-			if msg:match(banned) then
-				return
-			end
-		end
-		overridden(msg, ...)
-	end
-end)(require("notify"))
+codeium.setup()
 
+-- local status_ok, persistance = pcall(require, "persistance")
+-- if not status_ok then
+-- 	return
+-- end
+--
+-- persistance.setup()
+
+-- restore the session for the current directory
+-- vim.api.nvim_set_keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], {})
+
+-- restore the last session
+vim.api.nvim_set_keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
+
+-- stop Persistence => session won't be saved on exit
+-- vim.api.nvim_set_keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], {})
+
+
+-- local banned_messages = { "warning: multiple different client offset_encodings" }
+--
+-- vim.notify = (function(overridden)
+-- 	return function(msg, ...)
+-- 		for _, banned in ipairs(banned_messages) do
+-- 			if msg:match(banned) then
+-- 				return
+-- 			end
+-- 		end
+-- 		overridden(msg, ...)
+-- 	end
+-- end)(require("notify"))

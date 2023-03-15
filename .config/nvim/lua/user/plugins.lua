@@ -71,6 +71,7 @@ return packer.startup(function(use)
 	use({ "AckslD/nvim-neoclip.lua" })
 	use({ "folke/noice.nvim", requires = "MunifTanjim/nui.nvim" })
 	use({ "ggandor/flit.nvim", requires = "ggandor/leap.nvim" })
+	-- use({ "folke/persistence.nvim" })
 
 	-- completion
 	use({ "hrsh7th/nvim-cmp" })
@@ -86,6 +87,7 @@ return packer.startup(function(use)
 	use({ "numToStr/Comment.nvim" })
 	use({ "metakirby5/codi.vim" })
 	use({ "kylechui/nvim-surround" })
+	use({ "jcdickinson/codeium.nvim" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" })
@@ -103,6 +105,7 @@ return packer.startup(function(use)
 	-- use({ "liuchengxu/vista.vim" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "folke/trouble.nvim" })
+	-- use({ "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" })
 
 	-- telescope
 	use({ "nvim-telescope/telescope.nvim" })

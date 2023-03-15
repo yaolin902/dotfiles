@@ -15,7 +15,6 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
-
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -42,6 +41,7 @@ local kind_icons = {
 	Event = "",
 	Operator = "",
 	TypeParameter = "",
+	Codeium = "",
 }
 
 cmp.setup({
@@ -101,6 +101,7 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				codeium = "[Codeium]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -110,6 +111,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
+		{ name = "codeium" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

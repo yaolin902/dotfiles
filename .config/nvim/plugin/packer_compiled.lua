@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
     url = "https://github.com/CRAG666/code_runner.nvim"
   },
+  ["codeium.nvim"] = {
+    loaded = true,
+    path = "/home/y41/.local/share/nvim/site/pack/packer/start/codeium.nvim",
+    url = "https://github.com/jcdickinson/codeium.nvim"
+  },
   ["codi.vim"] = {
     loaded = true,
     path = "/home/y41/.local/share/nvim/site/pack/packer/start/codi.vim",

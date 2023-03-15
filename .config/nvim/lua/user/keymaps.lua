@@ -24,13 +24,14 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 keymap("n", "<leader>tf", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>tg", ":Telescope live_grep<cr>", opts)
-keymap("n", "<leader>s", ":SymbolsOutline<cr>", opts)
+-- keymap("n", "<leader>s", ":SymbolsOutline<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap("n", "<leader>j", ":HopWord<cr>", opts)
 keymap("n", "<leader>r", ":RnvimrToggle<cr>", opts)
 keymap("n", "<leader>c", ":Codi!!<cr>", opts)
 keymap("n", "<leader>g", ":LazyGit<cr>", opts)
 keymap("n", "<leader>xx", ":TroubleToggle<cr>", opts)
+keymap("n", "<leader>ll", ":ToggleDiag<cr>", opts)
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -51,3 +52,15 @@ end
 
 capslock.setup()
 keymap("i", "<C-l>", "<Plug>CapsLockToggle", opts)
+
+vim.g.diagnostics_active = true
+function _G.toggle_diagnostics()
+	if vim.g.diagnostics_active then
+		vim.g.diagnostics_active = false
+		vim.cmd([[LspStop]])
+	else
+		vim.g.diagnostics_active = true
+		vim.cmd([[LspStart]])
+	end
+end
+keymap("n", "<leader>ll", ":call v:lua.toggle_diagnostics()<CR>", opts)
