@@ -6,6 +6,16 @@ end
 saga.setup({
 	code_action_icon = "",
 	border_style = "rounded",
+	symbol_in_winbar = {
+		enable = true,
+		separator = " > ",
+		ignore_patterns = {},
+		hide_keyword = true,
+		show_file = true,
+		folder_level = 2,
+		respect_root = false,
+		color_mode = true,
+	},
 })
 local keymap = vim.keymap.set
 -- Lsp finder find the symbol definition implement reference
@@ -57,3 +67,8 @@ keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
 keymap("n", "<A-d>", "<cmd>Lspsaga open_floaterm lazygit<CR>", { silent = true })
 -- close floaterm
 keymap("t", "<A-d>", [[<C-\><C-n><cmd>Lspsaga close_floaterm<CR>]], { silent = true })
+
+vim.cmd([[
+highlight NormalFloat guibg=#282828 gui=nocombine
+highlight LspSignatureActiveParameter guibg=#665c54 gui=nocombine
+]])

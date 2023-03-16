@@ -39,7 +39,6 @@ return packer.startup(function(use)
 	use({ "nvim-lua/popup.nvim" })
 	use({ "nvim-lua/plenary.nvim" })
 	use({ "ellisonleao/gruvbox.nvim" })
-	-- use { "almo7aya/neogruvbox.nvim" }
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
@@ -59,12 +58,10 @@ return packer.startup(function(use)
 	use({ "kevinhwang91/nvim-ufo", requires = { "kevinhwang91/promise-async", "luukvbaal/statuscol.nvim" } })
 	-- use({ "folke/which-key.nvim" })
 	use({ "sindrets/diffview.nvim" })
-	-- use({ "gelguy/wilder.nvim" })
 	use({ "karb94/neoscroll.nvim" })
 	-- use({ "ThePrimeagen/harpoon" })
 	use({ "folke/todo-comments.nvim" })
 	use({ "MattesGroeger/vim-bookmarks" })
-	use({ "kevinhwang91/rnvimr" })
 	use({ "beauwilliams/focus.nvim" })
 	use({ "NvChad/nvim-colorizer.lua" })
 	use({ "phaazon/hop.nvim" })
@@ -88,6 +85,7 @@ return packer.startup(function(use)
 	use({ "metakirby5/codi.vim" })
 	use({ "kylechui/nvim-surround" })
 	use({ "jcdickinson/codeium.nvim" })
+	use({ "onsails/lspkind.nvim" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" })
@@ -96,20 +94,16 @@ return packer.startup(function(use)
 	use({ "jose-elias-alvarez/null-ls.nvim" })
 	use({ "rcarriga/nvim-notify" })
 
-	-- use({ "simrat39/symbols-outline.nvim" })
-	-- use({ "SmiteshP/nvim-navic" })
 	use({ "RRethy/vim-illuminate" })
 	use({ "glepnir/lspsaga.nvim" })
 	use({ "CRAG666/code_runner.nvim" })
 	use({ "kevinhwang91/nvim-hlslens" })
-	-- use({ "liuchengxu/vista.vim" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "folke/trouble.nvim" })
 	-- use({ "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" })
 
 	-- telescope
 	use({ "nvim-telescope/telescope.nvim" })
-	use({ "nvim-telescope/telescope-media-files.nvim" })
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 	use({ "kdheepak/lazygit.nvim" })
 
