@@ -18,7 +18,7 @@ local diagnostics = {
 	sections = { "error", "warn" },
 	symbols = {
 		error = " ",
-		warn = " ", --[[ info = " ", hint = " " ]]
+		warn = " ",
 	},
 	colored = true,
 	update_in_insert = false,
@@ -28,7 +28,7 @@ local diagnostics = {
 local diff = {
 	"diff",
 	colored = false,
-	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+	symbols = { added = " ", modified = " ", removed = " " },
 }
 
 local branch = {
@@ -130,44 +130,18 @@ local fileformat = {
 		dos = "", -- e70f
 		mac = "", -- e711
 	},
+	cond = hide_in_width,
 }
 
--- local sym = {
--- 	"%{%v:lua.require'user.navic'.getnavic()%}",
--- 	color = { bg = "#282828" },
--- }
-
-local function env_cleanup(venv)
-	if string.find(venv, "/") then
-		local final_venv = venv
-		for w in venv:gmatch("([^/]+)") do
-			final_venv = w
-		end
-		venv = final_venv
-	end
-	return venv
-end
-
-local pyenv = {
-	function()
-		if vim.bo.filetype == "python" then
-			local venv = os.getenv("CONDA_DEFAULT_ENV") or os.getenv("VIRTUAL_ENV")
-			if venv then
-				local py_icon = ""
-				return string.format(" " .. py_icon .. " [%s]", env_cleanup(venv))
-			end
-		end
-		return ""
-	end,
-	color = { bg = "#282828", fg = "#EBDBB2" },
+local location = {
+	"location",
+	icon = { "", align = "left" },
 }
 
-local space = {
-	function()
-		return "" .. "%=" .. ""
-	end,
-	max_length = 99,
-	color = { bg = "#282828" },
+local encoding = {
+	"encoding",
+	separator = "",
+	cond = hide_in_width,
 }
 
 lualine.setup({
@@ -181,22 +155,20 @@ lualine.setup({
 		lualine_a = { "mode" },
 		lualine_b = { branch },
 		lualine_c = { diagnostics, filename, lsp },
-		lualine_x = { diff, "encoding", fileformat, filetype },
-		lualine_y = { "location" },
+		lualine_x = { diff, encoding, fileformat, filetype },
+		lualine_y = { location },
 		lualine_z = { "progress" },
 	},
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
+		lualine_c = { filename },
+		lualine_x = { location },
 		lualine_y = {},
 		lualine_z = {},
 	},
 	tabline = {},
-	winbar = {
-		-- lualine_c = { sym, space, pyenv },
-	},
+	winbar = {},
 	inactive_winbar = {},
 	extensions = {},
 })

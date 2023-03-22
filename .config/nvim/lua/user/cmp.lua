@@ -20,6 +20,9 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us" }
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -32,7 +35,7 @@ cmp.setup({
 		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+		["<C-y>"] = cmp.config.disable,
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
@@ -72,9 +75,21 @@ cmp.setup({
 		fields = { "kind", "abbr", "menu" },
 		format = lspkind.cmp_format({
 			mode = "symbol",
-			maxwidth = 50,
+			maxwidth = 30,
 			ellipsis_char = "...",
 			symbol_map = { Codeium = "" },
+			before = function(entry, vim_item)
+				vim_item.menu = ({
+					nvim_lsp = "[LSP]",
+					luasnip = "[Snip]",
+					buffer = "[Buf]",
+					path = "[Path]",
+					codeium = "[AI]",
+					calc = "[Calc]",
+					spell = "[Spel]",
+				})[entry.source.name]
+				return vim_item
+			end,
 		}),
 	},
 	sources = {
@@ -83,6 +98,16 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "codeium" },
+		{ name = "calc" },
+		{
+			name = "spell",
+			option = {
+				keep_all_entries = false,
+				enable_in_context = function()
+					return true
+				end,
+			},
+		},
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

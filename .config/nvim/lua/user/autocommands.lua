@@ -30,22 +30,4 @@ vim.cmd([[
   augroup end
   autocmd BufRead * autocmd FileType <buffer> ++once
   \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
-
-
-  " function! MathAndLiquid()
-  "   syn region math start=/\$\$/ end=/\$\$/
-  "   syn match math_block '\$[^$].\{-}\$'
-  "
-  "   syn match liquid '{%.*%}'
-  "   syn region highlight_block start='{% highlight .*%}' end='{%.*%}'
-  "   syn region highlight_block start='```' end='```'
-  "
-  "   hi link math Statement
-  "   hi link liquid Statement
-  "   hi link highlight_block Function
-  "   hi link math_block Function
-  " endfunction
-  "
-  " autocmd BufRead,BufNewFile,BufEnter *.md,*.markdown call MathAndLiquid()
-
 ]])

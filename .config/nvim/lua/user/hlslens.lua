@@ -3,7 +3,9 @@ if not status_ok then
 	return
 end
 
-hlslens.setup({})
+hlslens.setup({
+	calm_down = true,
+})
 
 local kopts = { noremap = true, silent = true }
 

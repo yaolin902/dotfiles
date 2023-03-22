@@ -3,8 +3,13 @@ if not status_ok then
 	return
 end
 
+local status_ok, Rule = pcall(require, "nvim-autopairs.rule")
+if not status_ok then
+	return
+end
+
 npairs.setup({
-	check_ts = true, 
+	check_ts = true,
 	disable_filetype = { "TelescopePrompt" },
 	ts_config = {
 		lua = { "string", "source" },
@@ -16,7 +21,7 @@ npairs.setup({
 		map = "<M-e>",
 		chars = { "{", "[", "(", '"', "'" },
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-		offset = 0, -- Offset from pattern match
+		offset = 0,
 		end_key = "$",
 		keys = "qwertyuiopzxcvbnmasdfghjkl",
 		check_comma = true,
@@ -24,6 +29,9 @@ npairs.setup({
 		highlight_grey = "LineNr",
 	},
 })
+
+npairs.add_rule(Rule("$$", "$$", "tex"))
+npairs.add_rule(Rule("$$", "$$", "markdown"))
 
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")

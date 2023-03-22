@@ -6,7 +6,6 @@ if not status_cmp_ok then
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
--- M.capabilities.offsetEncoding = { "utf-8" }
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
@@ -28,9 +27,9 @@ M.setup = function()
 	end
 
 	local config = {
-		virtual_text = false, -- disable virtual text
+		virtual_text = true,
 		signs = {
-			active = signs, -- show signs
+			active = signs,
 		},
 		update_in_insert = false,
 		underline = true,
@@ -46,31 +45,12 @@ M.setup = function()
 	}
 
 	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
-
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-		underline = true,
-		virtual_text = {
-			spacing = 5,
-			severity_limit = "Warning",
-		},
-		update_in_insert = false,
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
 end
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
 	local keymap = vim.api.nvim_buf_set_keymap
 	keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 	keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
@@ -93,30 +73,20 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = false
 	end
 
-	-- local status_ok, navic = pcall(require, "nvim-navic")
-	-- if not status_ok then
-	-- 	return
-	-- end
-	--
-	-- if client.server_capabilities.documentSymbolProvider then
-	-- 	navic.attach(client, bufnr)
-	-- end
-
 	lsp_keymaps(bufnr)
-
-	-- local status_ok, illuminate = pcall(require, "illuminate")
-	-- if not status_ok then
-	-- 	return
-	-- end
-	--
-	-- illuminate.on_attach(client)
 
 	local status_ok, lsp_sig = pcall(require, "lsp_signature")
 	if not status_ok then
 		return
 	end
 
-	lsp_sig.on_attach(client, bufnr)
+	lsp_sig.on_attach({
+		bind = true,
+		hint_enable = false,
+		handler_opts = {
+			border = "rounded",
+		},
+	}, bufnr)
 end
 
 return M

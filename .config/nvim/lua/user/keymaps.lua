@@ -1,6 +1,7 @@
 local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
+local keymaps = vim.keymap.set
 
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -24,14 +25,30 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 keymap("n", "<leader>tf", ":Telescope find_files<cr>", opts)
 keymap("n", "<leader>tg", ":Telescope live_grep<cr>", opts)
--- keymap("n", "<leader>s", ":SymbolsOutline<cr>", opts)
 keymap("n", "<leader>u", ":UndotreeToggle<cr>", opts)
 keymap("n", "<leader>j", ":HopWord<cr>", opts)
--- keymap("n", "<leader>r", ":RnvimrToggle<cr>", opts)
 keymap("n", "<leader>c", ":Codi!!<cr>", opts)
-keymap("n", "<leader>g", ":LazyGit<cr>", opts)
+keymap("n", "<leader>gg", ":LazyGit<cr>", opts)
 keymap("n", "<leader>xx", ":TroubleToggle<cr>", opts)
 keymap("n", "<leader>ll", ":ToggleDiag<cr>", opts)
+keymap("n", "<leader>r", ":RunCode<CR>", opts)
+
+keymaps("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+keymaps({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+keymaps("n", "gr", "<cmd>Lspsaga rename<CR>", opts)
+keymaps("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
+keymaps("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+keymaps("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+keymaps("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+keymaps("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+keymaps("n", "[E", function()
+	require("lspsaga.diagnostic").goto_prev({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
+keymaps("n", "]E", function()
+	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
+end, opts)
+keymaps("n", "<leader>s", "<cmd>Lspsaga outline<CR>", opts)
+keymaps("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)

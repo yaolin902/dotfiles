@@ -26,7 +26,7 @@ opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.smartindent = true
--- opt.signcolumn = 'number'
+opt.signcolumn = "yes"
 opt.showmode = false
 
 opt.number = true
@@ -42,7 +42,7 @@ opt.cursorline = true
 opt.updatetime = 300
 
 opt.background = "dark"
-vim.api.nvim_set_hl(0, 'htmlArg', { italic=true })
+vim.api.nvim_set_hl(0, "htmlArg", { italic = true })
 vim.cmd([[colorscheme gruvbox]])
-vim.api.nvim_set_hl(0, 'htmlArg', { italic=true })
+vim.api.nvim_set_hl(0, "htmlArg", { italic = true })
 -- vim.api.nvim_set_hl(0, 'xmlAttrib', { italic=true })

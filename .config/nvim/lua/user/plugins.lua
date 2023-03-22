@@ -38,22 +38,30 @@ return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim" })
 	use({ "nvim-lua/popup.nvim" })
 	use({ "nvim-lua/plenary.nvim" })
+
+	-- colorschemes
 	use({ "ellisonleao/gruvbox.nvim" })
+
+	-- ui
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 	use({ "akinsho/bufferline.nvim" })
-	use({ "moll/vim-bbye" })
-	use({ "barklan/capslock.nvim" })
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "kyazdani42/nvim-tree.lua" })
 	use({ "akinsho/toggleterm.nvim" })
+	use({ "glepnir/dashboard-nvim" })
+	use({ "folke/noice.nvim", requires = "MunifTanjim/nui.nvim" })
+	use({ "rcarriga/nvim-notify" })
+	use({ "lukas-reineke/indent-blankline.nvim" })
+	use({ "kevinhwang91/nvim-hlslens" })
+
+	-- utilities
+	use({ "famiu/bufdelete.nvim" })
+	use({ "barklan/capslock.nvim" })
 	use({ "ahmedkhalf/project.nvim" })
 	use({ "lewis6991/impatient.nvim" })
-	use({ "lukas-reineke/indent-blankline.nvim" })
-	use({ "goolord/alpha-nvim" })
-	use({ "glepnir/dashboard-nvim" })
 	use({ "mbbill/undotree" })
 	use({ "kevinhwang91/nvim-ufo", requires = { "kevinhwang91/promise-async", "luukvbaal/statuscol.nvim" } })
 	-- use({ "folke/which-key.nvim" })
@@ -66,41 +74,42 @@ return packer.startup(function(use)
 	use({ "NvChad/nvim-colorizer.lua" })
 	use({ "phaazon/hop.nvim" })
 	use({ "AckslD/nvim-neoclip.lua" })
-	use({ "folke/noice.nvim", requires = "MunifTanjim/nui.nvim" })
 	use({ "ggandor/flit.nvim", requires = "ggandor/leap.nvim" })
-	-- use({ "folke/persistence.nvim" })
+	use({ "CRAG666/code_runner.nvim" })
+	use({ "windwp/nvim-autopairs" })
+	use({ "numToStr/Comment.nvim" })
+	use({ "metakirby5/codi.vim" })
+	use({ "kylechui/nvim-surround" })
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
 	-- completion
 	use({ "hrsh7th/nvim-cmp" })
 	use({ "hrsh7th/cmp-buffer" })
 	use({ "hrsh7th/cmp-path" })
+	use({ "hrsh7th/cmp-calc" })
+	use({ "f3fora/cmp-spell" })
 	use({ "hrsh7th/cmp-cmdline" })
 	use({ "hrsh7th/cmp-nvim-lsp" })
 	use({ "saadparwaiz1/cmp_luasnip" })
-
 	use({ "L3MON4D3/LuaSnip" })
 	use({ "rafamadriz/friendly-snippets" })
-	use({ "windwp/nvim-autopairs" })
-	use({ "numToStr/Comment.nvim" })
-	use({ "metakirby5/codi.vim" })
-	use({ "kylechui/nvim-surround" })
 	use({ "jcdickinson/codeium.nvim" })
-	use({ "onsails/lspkind.nvim" })
 
 	-- LSP
 	use({ "neovim/nvim-lspconfig" })
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use({ "jose-elias-alvarez/null-ls.nvim" })
-	use({ "rcarriga/nvim-notify" })
-
+	use({ "onsails/lspkind.nvim" })
 	use({ "RRethy/vim-illuminate" })
 	use({ "glepnir/lspsaga.nvim" })
-	use({ "CRAG666/code_runner.nvim" })
-	use({ "kevinhwang91/nvim-hlslens" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "folke/trouble.nvim" })
-	-- use({ "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim" })
 
 	-- telescope
 	use({ "nvim-telescope/telescope.nvim" })
@@ -122,14 +131,6 @@ return packer.startup(function(use)
 	use({ "mfussenegger/nvim-dap" })
 	use({ "rcarriga/nvim-dap-ui" })
 	use({ "ravenxrz/DAPInstall.nvim" })
-
-	-- markdown pv
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()

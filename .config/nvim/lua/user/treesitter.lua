@@ -55,8 +55,6 @@ configs.setup({
 		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
 		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		max_file_lines = nil, -- Do not enable for files with more than n lines, int
-		-- colors = {}, -- table of hex strings
-		-- termcolors = {} -- table of colour name strings
 	},
 })
 
@@ -134,14 +132,7 @@ context.setup({
 		},
 	},
 	exact_patterns = {
-		-- Example for a specific filetype with Lua patterns
-		-- Treat patterns.rust as a Lua pattern (i.e "^impl_item$" will
-		-- exactly match "impl_item" only)
-		-- rust = true,
 	},
-
-	-- [!] The options below are exposed but shouldn't require your attention,
-	--     you can safely ignore them.
 
 	zindex = 20, -- The Z-index of the context window
 	mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'

@@ -21,6 +21,7 @@ dashboard.setup({
 			},
 			{
 				icon = " ",
+				icon_hl = "@variable",
 				desc = "New file",
 				group = "Label",
 				action = "ene <BAR> startinsert",
@@ -28,6 +29,7 @@ dashboard.setup({
 			},
 			{
 				icon = " ",
+				icon_hl = "@variable",
 				desc = "Find project",
 				group = "Label",
 				action = "lua require('telescope').extensions.projects.projects()",
@@ -35,20 +37,15 @@ dashboard.setup({
 			},
 			{
 				icon = " ",
+				icon_hl = "@variable",
 				desc = "Find text",
 				group = "Label",
 				action = "Telescope live_grep",
 				key = "t",
 			},
 			{
-				icon = " ",
-				desc = "Config",
-				group = "Label",
-				action = "e $MYVIMRC",
-				key = "c",
-			},
-			{
 				icon = " ",
+				icon_hl = "@variable",
 				desc = "Quit",
 				group = "Label",
 				action = "qa",
