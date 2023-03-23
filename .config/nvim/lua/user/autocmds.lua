@@ -1,10 +1,11 @@
 vim.cmd([[
   augroup _general_settings
     autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
+    autocmd FileType qf,help,man,lspinfo,dap-float nnoremap <silent> <buffer> q :close<CR> 
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
+    autocmd FileType gitcommit,gitrebase startinsert | 1
   augroup end
   augroup _git
     autocmd!
@@ -20,14 +21,12 @@ vim.cmd([[
     autocmd!
     autocmd VimResized * tabdo wincmd = 
   augroup end
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
   augroup _lsp
     autocmd!
     autocmd BufWritePre * lua vim.lsp.buf.format { async = true }
   augroup end
   autocmd BufRead * autocmd FileType <buffer> ++once
   \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
+  autocmd! TermOpen term://* startinsert | set winfixheight
+  autocmd FocusLost * silent!wa
 ]])
