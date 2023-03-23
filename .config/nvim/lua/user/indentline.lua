@@ -20,7 +20,14 @@ indent_blankline.setup({
 	buftype_exclude = { "terminal", "nofile" },
 	filetype_exclude = {
 		"help",
-		"packer",
+		"startify",
+		"aerial",
+		"alpha",
+		"dashboard",
+		"lazy",
+		"neogitstatus",
 		"NvimTree",
+		"neo-tree",
+		"Trouble",
 	},
 })

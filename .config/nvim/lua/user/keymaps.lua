@@ -17,21 +17,8 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-keymap("n", "<leader>tf", ":Telescope find_files<cr>", opts)
-keymap("n", "<leader>tg", ":Telescope live_grep<cr>", opts)
-keymap("n", "<leader>u", ":UndotreeToggle<cr>", opts)
-keymap("n", "<leader>j", ":HopWord<cr>", opts)
-keymap("n", "<leader>c", ":Codi!!<cr>", opts)
-keymap("n", "<leader>gg", ":LazyGit<cr>", opts)
-keymap("n", "<leader>xx", ":TroubleToggle<cr>", opts)
-keymap("n", "<leader>ll", ":ToggleDiag<cr>", opts)
-keymap("n", "<leader>r", ":RunCode<CR>", opts)
 
 keymaps("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
 keymaps({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
@@ -47,7 +34,6 @@ end, opts)
 keymaps("n", "]E", function()
 	require("lspsaga.diagnostic").goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, opts)
-keymaps("n", "<leader>s", "<cmd>Lspsaga outline<CR>", opts)
 keymaps("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
 keymap("v", "<", "<gv", opts)
@@ -80,4 +66,3 @@ function _G.toggle_diagnostics()
 		vim.cmd([[LspStart]])
 	end
 end
-keymap("n", "<leader>ll", ":call v:lua.toggle_diagnostics()<CR>", opts)

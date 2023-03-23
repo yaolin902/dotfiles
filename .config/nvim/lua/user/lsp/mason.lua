@@ -49,17 +49,3 @@ for _, server in pairs(servers) do
 
 	lspconfig[server].setup(opts)
 end
-
--- -- omnisharp
--- local nvim_lsp = require("lspconfig")
---
--- local pid = vim.fn.getpid()
--- -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
--- local omnisharp_bin = "/home/y41/.local/share/nvim/mason/packages/omnisharp-mono/run"
---
--- nvim_lsp.omnisharp.setup({
--- 	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
--- 	root_dir = nvim_lsp.util.root_pattern("*.csproj", "*.sln"),
--- 	on_attach = require("user.lsp.handlers").on_attach,
--- 	capabilities = require("user.lsp.handlers").capabilities,
--- })

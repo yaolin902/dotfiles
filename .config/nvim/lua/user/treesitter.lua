@@ -25,11 +25,11 @@ configs.setup({
 		"vim",
 		"regex",
 		"typescript",
-    "svelte",
-    "html",
-    "css",
-    "javascript",
-    "tsx",
+		"svelte",
+		"html",
+		"css",
+		"javascript",
+		"tsx",
 	},
 	ignore_install = { "" },
 	sync_install = false,
@@ -52,22 +52,18 @@ configs.setup({
 	},
 	rainbow = {
 		enable = true,
-		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
-		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		-- disable = { "jsx", "cpp" },
+		extended_mode = true,
+		max_file_lines = nil,
 	},
 })
 
 context.setup({
-	enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-	max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-	trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-	min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
-	patterns = { -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-		-- For all filetypes
-		-- Note that setting an entry here replaces all other patterns for this entry.
-		-- By setting the 'default' entry below, you can control which nodes you want to
-		-- appear in the context window.
+	enable = true,
+	max_lines = 0,
+	trim_scope = "outer",
+	min_window_height = 0,
+	patterns = {
 		default = {
 			"class",
 			"function",
@@ -81,8 +77,6 @@ context.setup({
 			"struct",
 			"enum",
 		},
-		-- Patterns for specific filetypes
-		-- If a pattern is missing, *open a PR* so everyone can benefit.
 		tex = {
 			"chapter",
 			"section",
@@ -131,12 +125,9 @@ context.setup({
 			"block_mapping_pair",
 		},
 	},
-	exact_patterns = {
-	},
+	exact_patterns = {},
 
-	zindex = 20, -- The Z-index of the context window
-	mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
-	-- Separator between context and content. Should be a single character string, like '-'.
-	-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+	zindex = 20,
+	mode = "cursor",
 	separator = nil,
 })
