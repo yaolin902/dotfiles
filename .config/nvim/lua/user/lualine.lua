@@ -27,7 +27,7 @@ local diagnostics = {
 
 local diff = {
 	"diff",
-	colored = false,
+	colored = true,
 	symbols = { added = " ", modified = " ", removed = " " },
 }
 
@@ -126,10 +126,12 @@ local filename = {
 local fileformat = {
 	"fileformat",
 	symbols = {
-		unix = "", -- e712
-		dos = "", -- e70f
-		mac = "", -- e711
+		unix = "",
+		dos = "",
+		mac = "",
 	},
+	separator = "",
+	padding = { left = 1, right = -1 },
 	cond = hide_in_width,
 }
 
@@ -140,7 +142,6 @@ local location = {
 
 local encoding = {
 	"encoding",
-	separator = "",
 	cond = hide_in_width,
 }
 
@@ -155,7 +156,7 @@ lualine.setup({
 		lualine_a = { "mode" },
 		lualine_b = { branch },
 		lualine_c = { diagnostics, filename, lsp },
-		lualine_x = { diff, encoding, fileformat, filetype },
+		lualine_x = { diff, fileformat, encoding, filetype },
 		lualine_y = { location },
 		lualine_z = { "progress" },
 	},
